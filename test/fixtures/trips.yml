@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trip_name: MyString
+  duration: MyString
+  budget: 1
+  people_going: 1
+
+two:
+  trip_name: MyString
+  duration: MyString
+  budget: 1
+  people_going: 1

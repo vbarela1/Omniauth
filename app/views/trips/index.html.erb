@@ -1,0 +1,15 @@
+<h1>All Trips</h1>
+
+<% if @trips.any? %>
+  <% @trips.each do |trip| %>
+    <h5><li><%= link_to trip.trip_name, trip_path(trip) %></li></h5>
+  <% end %>
+
+<% else %>
+  <h3>No Trips Found, Please Create A New Trip</h3>
+<% end %>
+
+<br />
+<%= link_to 'Create New Trip', new_trip_path %>
+
+
