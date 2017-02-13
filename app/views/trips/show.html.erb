@@ -1,13 +1,22 @@
-<%= link_to 'View Locations', trip_locations_path(@trip)%>
-<h1><%= @trip.trip_name %></h1>
 
-<ul>
-  <li> Duration: <%= @trip.duration %> </li>
-  <li> Budget: <%= @trip.budget %> </li>
-  <li> Number of People: <%= @trip.people_going %></li>
-<br />
+<h1 class="center"> <%= @trip.trip_name %></h1>
+
+
+<div class="container">
+  <div class="row grey lighten-2">
+    <div class="col s12"><h5>Duration</h5><p><%= @trip.duration %></p></div>
+  </div>
+  <div class="row grey">
+    <div class="col s12 m6 l3"><h5>Budget</h5><p><%= @trip.budget %></p></div>
+  </div>
+  <div class="row grey darken-2">
+    <div class="col s12"><h5>Number of People Going</h5><p><%= @trip.people_going %></p></div>
+  </div>
+  <div class="center">
+   <%= link_to 'View Locations', trip_locations_path(@trip), class:'btn cyan white-text'%> 
   
-  <li> <%= link_to 'Edit Trip', edit_trip_path(@trip) %> </li>
-  <li> <%= link_to 'Delete Trip', trip_path(@trip), method: :delete, data: {confirm: 'Really Delete Trip?'} %></li>
-</ul>
-
+  <%= link_to 'Edit Trip', edit_trip_path(@trip), class:'btn cyan white-text'%>
+  
+  <%= link_to 'Delete Trip', trip_path(@trip), class:'btn cyan white-text', method: :delete, data: {confirm: 'Really Delete Trip?'} %>
+</div>
+</div>

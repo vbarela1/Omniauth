@@ -1,11 +1,23 @@
-<h1> Locations for: <%= @trip.trip_name%></h1>
+<h3 class="center"> Locations for: <%= @trip.trip_name%></h3>
+<br />
+<div class="container">
+<div class="row">
+  <% @trip.locations.each do |location| %>
+    <div class="col s12 m6">
+      <div class="card grey">
+        <div class="card-content">
+          <span class="card-title white-text"><%= location.name %>
+ 
+        </div>
+        <div class="card-action center">
+          <%= link_to "Show", trip_location_path(@trip, location)%>
+        </div>
+    </div>
+  </div>
+<% end %>
+</div>
+</div>
 
-<% if @trip.locations.any? %>
-<% @trip.locations.each do |location| %>
-  <%= link_to @trip.locations, trip_locations_path(location)%>
-<% end %>
-<% else %>
-  <h3> No Locations Found </h3>
-<% end %>
-<br/>
-<%= link_to 'Home', :root %>
+
+<div class="center"><%= link_to 'Add Location', new_trip_location_path(@trip), class:'btn cyan white-text'%></div>
+<div class="center"><%= link_to 'Back', trip_path(@trip), class:'btn cyan white-text'%></div>

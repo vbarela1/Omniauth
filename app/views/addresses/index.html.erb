@@ -1,0 +1,17 @@
+<h1>Address For: <%= @location.name %> </h1>
+
+
+<% if @address.nil? %>
+<h4> There are no addresses </h4>
+<%= link_to 'Add Address', new_location_address_path(@location) %>
+<% else %>
+    <h3><%= @address.physical_address%></h3>
+    <h3><%= @address.city %></h3>
+    <h3><%= @address.country%></h3>
+    <h3><%= @address.description%></h3>
+
+    <%= link_to 'Delete', location_address_path(@location, @address), method: :delete, data: {confirm: 'Really Delete Address?'}%>
+
+<%= link_to 'Edit', edit_location_address_path(@location, @address) %>
+
+  <% end %>
