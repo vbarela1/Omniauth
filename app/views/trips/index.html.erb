@@ -1,25 +1,25 @@
-
-
-
 <h3 class="center">All Trips</h3>
 <br />
+<div class="center"><%= link_to 'Create New Trip', new_trip_path, class:'btn cyan white-text' %></div>
 <div class="container">
-<div class="row">
-  <% @trips.each do |trip| %>
-    <div class="col s12 m6">
-      <div class="z-depth-5">
-        <div class="card grey darken-1">
-          <div class="card-content">
-            <span class="card-title white-text"><%= trip.trip_name %></span>
-         
-          </div>
-          <div class="card-action center">
-            <%= link_to "Show", trip_path(trip)%>
+  <div class="row">
+    <% if @trips.any? %>
+      <% @trips.each do |trip| %>
+        <div class="col s12 m6">
+          <div class="z-depth-5">
+            <div class="card grey darken-1">
+              <div class="card-content">
+                <span class="card-title white-text"><%= trip.trip_name %></span>
+              </div>
+              <div class="card-action center">
+                <%= link_to "Show", trip_path(trip)%>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  <% end %>
+      <% end %>
+    <% else %>
+      <h4>There are no trips </h4>
+    <% end %>
   </div>
-  </div>
-<div class="center"><%= link_to 'Create New Trip', new_trip_path, class:'btn cyan white-text' %></div>
+</div>

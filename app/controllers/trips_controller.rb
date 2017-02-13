@@ -1,19 +1,20 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
   def index
-    @trips = Trip.all
+    @trips = current_user.trips
   end
 
   def show
   end
 
   def new
-    @trip = Trip.new
+    @trip = current_user.trips.new 
   end
 
   def create
-    @trip = Trip.new(trip_params)
+    @trip = current_user.trips.new(trip_params)
     if @trip.save
+      flash[:success] = 'Trip Created!'
       redirect_to trip_path(@trip)
     else 
       render :new
@@ -25,6 +26,7 @@ class TripsController < ApplicationController
 
   def update
     if @trip.update(trip_params)
+      flash[:success] = 'Trip Updated!'
       redirect_to trip_path(@trip)
     else 
       render :edit
@@ -33,6 +35,7 @@ class TripsController < ApplicationController
 
   def destroy
     @trip.destroy 
+    flash[:success] = 'Trip Deleted!'
     redirect_to trips_path 
   end 
 
