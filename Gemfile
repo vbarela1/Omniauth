@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # Materialize styling 
 gem 'materialize-sass'
 gem 'font-awesome-rails'
+gem 'devise', '~> 4.2.0'
 
 
 group :development, :test do

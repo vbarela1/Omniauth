@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-root 'trips#index'
+
+
+  devise_for :users
+root 'home#index'
 
 resources :trips do
   resources :locations

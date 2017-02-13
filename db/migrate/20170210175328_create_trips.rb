@@ -5,6 +5,7 @@ class CreateTrips < ActiveRecord::Migration[5.0]
       t.string :duration
       t.integer :budget
       t.integer :people_going
+      t.belongs_to :user
 
       t.timestamps
     end
