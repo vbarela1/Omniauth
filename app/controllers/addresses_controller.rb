@@ -16,6 +16,7 @@ class AddressesController < ApplicationController
   def create
     @address = @location.addresses.new(address_params)
     if @address.save
+      flash[:success] = 'Address Created!'
       redirect_to location_addresses_path(@location)
     else 
       render :new
@@ -27,6 +28,7 @@ class AddressesController < ApplicationController
 
   def update 
     if @address.update(address_params)
+      flash[:success] = 'Address Updated!'
       redirect_to location_addresses_path(@location)
     else 
       render :edit
@@ -35,6 +37,7 @@ class AddressesController < ApplicationController
 
   def destroy
     @address.destroy 
+    flash[:success] = 'Address Deleted!'
     redirect_to location_addresses_path(@location)
   end 
 

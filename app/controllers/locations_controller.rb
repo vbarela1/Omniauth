@@ -16,6 +16,7 @@ class LocationsController < ApplicationController
   def create
     @location = @trip.locations.new(location_params)
     if @location.save
+      flash[:success] = 'Location Created!'
      redirect_to trip_location_path(@trip, @location)
     else
       render :new 
@@ -27,6 +28,7 @@ class LocationsController < ApplicationController
 
   def update
     if @location.update(location_params)
+      flash[:success] = 'Location Updated!'
       redirect_to trip_location_path(@trip, @location)
     else 
       render :edit 
@@ -35,6 +37,7 @@ class LocationsController < ApplicationController
 
   def destroy
     @location.destroy
+    flash[:succes] = 'Location Deleted!'
     redirect_to trip_locations_path(@trip)
   end
 
