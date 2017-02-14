@@ -1,17 +1,29 @@
-<h1>Address For: <%= @location.name %> </h1>
+
+<h1 class="center">Address For: <%= @location.name %> </h1>
 
 
 <% if @address.nil? %>
-<h4> There are no addresses </h4>
-<%= link_to 'Add Address', new_location_address_path(@location) %>
+  <h4> There are no addresses </h4>
+  <%= link_to 'Add Address', new_location_address_path(@location) %>
 <% else %>
-    <h3><%= @address.physical_address%></h3>
-    <h3><%= @address.city %></h3>
-    <h3><%= @address.country%></h3>
-    <h3><%= @address.description%></h3>
+<div class="container">
+    <div class="row grey lighten-2">
+      <div class="col s12 m6"><h6>Street Address<p><%= @address.physical_address%></h6></p></div>
+    </div>
+    <div class="row grey">
+      <div class="col s12 m6"><h6>City<p><%= @address.city %></h6></p></div>
+    </div>
+    <div class="row grey darken-1">
+      <div class="col s12 m6"><h6>Country<p><%= @address.country %></h6></p></div>
+    </div>
+    <div class="row grey darken-2">
+      <div class="col s12 m6"><h6>Description<p><%= @address.description %></h6></p></div>
+    </div>
+  </div>
+<div class="center">
+<%= link_to 'Delete', location_address_path(@location, @address),class:'btn cyan white-text', method: :delete, data: {confirm: 'Really Delete Address?'}%>
 
-    <%= link_to 'Delete', location_address_path(@location, @address), method: :delete, data: {confirm: 'Really Delete Address?'}%>
-
-<%= link_to 'Edit', edit_location_address_path(@location, @address) %>
-
+<%= link_to 'Edit', edit_location_address_path(@location, @address),class:'btn cyan white-text' %>
+</div>
   <% end %>
+ 

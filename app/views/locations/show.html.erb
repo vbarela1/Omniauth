@@ -1,14 +1,20 @@
 <h1 class="center"> <%= @trip.trip_name %>: <%= @location.name %></h1>
-
-  <div class="row teal">
-    <div class="col s12 m6 l3"><h5>Description:</h5><p><%= @location.description %></p></div>
+<div class="container">
+  <div class="row grey lighten-2">
+    <div class="col s12 m6"><h5>Description:</h5><p><%= @location.description %></p></div>
   </div>
- 
   <div class="center">
-    <%= link_to 'Edit Location', edit_trip_location_path(@trip, @location) %>
-    <%= link_to 'Back', trip_path(@trip)%>
-    <%= link_to 'Delete Location', trip_location_path(@trip, @location), method: :delete, data: {confirm: 'Really Delete Location?'}%>
-    <%= link_to 'Address to Location', location_addresses_path(@location)%>
-    <%= link_to 'Add Address', new_location_address_path(@location)%>
+    <%= link_to 'Address to Location', location_addresses_path(@location), class:'btn cyan white-text'%>
+    <%= link_to 'Add Address', new_location_address_path(@location), class:'btn cyan white-text'%>
+  </div>
+  <br />
+  <div class="center"> 
+    <%= link_to 'Edit Location', edit_trip_location_path(@trip, @location), class:'btn cyan white-text' %>
+    <%= link_to 'Delete Location', trip_location_path(@trip, @location), class:'btn cyan white-text', method: :delete, data: {confirm: 'Really Delete Location?'}%>
+  </div>
+  <br />
+  <div class="center">
+    <%= link_to 'Back', trip_path(@trip), class:'btn cyan white-text'%>
+  </div>
  </div>
 </div>

@@ -1,27 +1,28 @@
+
 <%= form_for @trip do |f| %>
 <div class="container">
 
-<div class="amber-text">
-  <%= f.label :trip_name %>
-  <%= f.text_field :trip_name %>
+<div class="white-text">
+  <h3><%= f.label :trip_name %></h3>
+  <h3><%= f.text_field :trip_name %></h3>
 </div>
 
-<div class="amber-text">
+<div class="white-text">
   <%= f.label :duration %>
   <%= f.text_field :duration %>
 </div>
 
-<div class="amber-text">
+<div class="white-text">
   <%= f.label :budget %>
   <%= f.number_field :budget %>
 </div>
 
-<div class="amber-text">
+<div class="white-text">
   <%= f.label :people_going %>
   <%= f.number_field :people_going %>
 </div>
 
-<%= f.submit %>
+<div class="black-text"><%= f.submit %></div>
 
 </div>
 <% end %>
