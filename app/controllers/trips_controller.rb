@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
   def index
-    @trips = current_user.trips
+    @trips = current_user.trips.paginate(page: params[:page], per_page: 6)
   end
 
   def show
