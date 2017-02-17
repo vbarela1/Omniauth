@@ -1,8 +1,9 @@
 require 'faker'
+user = User.create(email: 'vbarela1@gmail.com', password: 'password')
 4.times do 
   Trip.create(
-    trip_name: Faker::Address.country, 
-    trip_id: trip.id 
+    trip_name: Faker::Address.country,
+    user_id: user.id
   )
 
 end
