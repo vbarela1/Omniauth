@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [:facebook]
+         :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :trips
   # after_create :action_mailer
@@ -14,13 +14,19 @@ class User < ApplicationRecord
   end 
 
   def self.from_omniauth(auth)
-    where(uid: auth.uid, provider: auth.provider).first_or_create do |user|
-      name_arr = auth.info.name.split(' ')
-      user.first_name = name_arr.first
-      user.last_name = name_arr.last
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0, 20]
-    end
+    if user = where(email: auth[:info][:email]).last
+      user.uid = auth.uid 
+      user.provider = auth.provider
+      user.save
+    else
+      name_arr = auth.info.name.split(' ') 
+      user = User.create( 
+      first_name: name_arr.first,
+      last_name: name_arr.last,
+      email: auth.info.email,
+      password: Devise.friendly_token[0, 20])
+    end 
+    return user
   end
 
   def action_mailer

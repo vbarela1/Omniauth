@@ -1,0 +1,12 @@
+<h2> Sign up for the newsletter!</h2>
+<hr /> 
+  <%= form_for @user do |f| %> 
+  <div class="container">
+  <%= f.label :name %>
+  <%= f.text_field :name %> 
+  <br />
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.submit %>
+  </div>
+  <% end %>
